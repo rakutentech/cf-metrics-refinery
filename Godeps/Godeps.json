@@ -1,0 +1,158 @@
+{
+	"ImportPath": "github.com/rakutentech/cf-metrics-refinery",
+	"GoVersion": "go1.10",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/Shopify/sarama",
+			"Comment": "v1.16.0-39-geae9146",
+			"Rev": "eae91468c24263f06ae73dce45eb26252c73b1d6"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry-community/go-cfclient",
+			"Rev": "47d911db943d64ba0cb107ed1c72d842e19fe349"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/gofileutils/fileutils",
+			"Rev": "4d0c80011a0f37da1711c184028bc40137cd45af"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/sonde-go/events",
+			"Rev": "b33733203bb48d7c56de7cb639d77f78b0449d19"
+		},
+		{
+			"ImportPath": "github.com/davecgh/go-spew/spew",
+			"Comment": "v1.1.0-12-g8991bc2",
+			"Rev": "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
+		},
+		{
+			"ImportPath": "github.com/eapache/go-resiliency/breaker",
+			"Comment": "v1.0.0-10-gef9aaa7",
+			"Rev": "ef9aaa7ea8bd2448429af1a77cf41b2b3b34bdd6"
+		},
+		{
+			"ImportPath": "github.com/eapache/go-xerial-snappy",
+			"Rev": "bb955e01b9346ac19dc29eb16586c90ded99a98c"
+		},
+		{
+			"ImportPath": "github.com/eapache/queue",
+			"Comment": "v1.1.0-2-g093482f",
+			"Rev": "093482f3f8ce946c05bcba64badd2c82369e084d"
+		},
+		{
+			"ImportPath": "github.com/fukata/golang-stats-api-handler",
+			"Comment": "v1.0.0-1-gab9f90f",
+			"Rev": "ab9f90f16caab828afda479fd34bfbbbba2efcee"
+		},
+		{
+			"ImportPath": "github.com/gogo/protobuf/gogoproto",
+			"Comment": "v1.0.0-6-gd5bc08a2",
+			"Rev": "d5bc08a2c4c572e9bcff820aa125fe38ac3a3a42"
+		},
+		{
+			"ImportPath": "github.com/gogo/protobuf/proto",
+			"Comment": "v1.0.0-6-gd5bc08a2",
+			"Rev": "d5bc08a2c4c572e9bcff820aa125fe38ac3a3a42"
+		},
+		{
+			"ImportPath": "github.com/gogo/protobuf/protoc-gen-gogo/descriptor",
+			"Comment": "v1.0.0-6-gd5bc08a2",
+			"Rev": "d5bc08a2c4c572e9bcff820aa125fe38ac3a3a42"
+		},
+		{
+			"ImportPath": "github.com/golang/snappy",
+			"Rev": "553a641470496b2327abcac10b36396bd98e45c9"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/logutils",
+			"Rev": "0dc08b1671f34c4250ce212759ebd880f743d883"
+		},
+		{
+			"ImportPath": "github.com/influxdata/influxdb/client/v2",
+			"Comment": "v1.5.0rc5-1-g044ca2ac8",
+			"Rev": "044ca2ac892d61bf526c8e3722b2e0b4f19c84d7"
+		},
+		{
+			"ImportPath": "github.com/influxdata/influxdb/models",
+			"Comment": "v1.5.0rc5-1-g044ca2ac8",
+			"Rev": "044ca2ac892d61bf526c8e3722b2e0b4f19c84d7"
+		},
+		{
+			"ImportPath": "github.com/influxdata/influxdb/pkg/escape",
+			"Comment": "v1.5.0rc5-1-g044ca2ac8",
+			"Rev": "044ca2ac892d61bf526c8e3722b2e0b4f19c84d7"
+		},
+		{
+			"ImportPath": "github.com/kelseyhightower/envconfig",
+			"Comment": "v1.3.0-11-g1f94cfa",
+			"Rev": "1f94cfab3dcc47159a6dcb83588baa3d8260e78a"
+		},
+		{
+			"ImportPath": "github.com/mailru/easyjson",
+			"Rev": "32fa128f234d041f196a9f3e0fea5ac9772c08e1"
+		},
+		{
+			"ImportPath": "github.com/mailru/easyjson/buffer",
+			"Rev": "32fa128f234d041f196a9f3e0fea5ac9772c08e1"
+		},
+		{
+			"ImportPath": "github.com/mailru/easyjson/jlexer",
+			"Rev": "32fa128f234d041f196a9f3e0fea5ac9772c08e1"
+		},
+		{
+			"ImportPath": "github.com/mailru/easyjson/jwriter",
+			"Rev": "32fa128f234d041f196a9f3e0fea5ac9772c08e1"
+		},
+		{
+			"ImportPath": "github.com/pierrec/lz4",
+			"Comment": "v1.1-2-ged8d4cc",
+			"Rev": "ed8d4cc3b461464e69798080a0092bd028910298"
+		},
+		{
+			"ImportPath": "github.com/pierrec/xxHash/xxHash32",
+			"Comment": "v0.1-11-ga0006b1",
+			"Rev": "a0006b13c722f7f12368c00a3d3c2ae8a999a0c6"
+		},
+		{
+			"ImportPath": "github.com/pkg/errors",
+			"Comment": "v0.8.0-11-g30136e2",
+			"Rev": "30136e27e2ac8d167177e8a583aa4c3fea5be833"
+		},
+		{
+			"ImportPath": "github.com/rcrowley/go-metrics",
+			"Rev": "8732c616f52954686704c8645fe1a9d59e9df7c1"
+		},
+		{
+			"ImportPath": "github.com/samuel/go-zookeeper/zk",
+			"Rev": "c4fab1ac1bec58281ad0667dc3f0907a9476ac47"
+		},
+		{
+			"ImportPath": "github.com/wvanbergen/kafka/consumergroup",
+			"Rev": "e2edea948ddfee841ea9a263b32ccca15f7d6c2f"
+		},
+		{
+			"ImportPath": "github.com/wvanbergen/kazoo-go",
+			"Rev": "f72d8611297a7cf105da904c04198ad701a60101"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "22ae77b79946ea320088417e4d50825671d82d57"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context/ctxhttp",
+			"Rev": "22ae77b79946ea320088417e4d50825671d82d57"
+		},
+		{
+			"ImportPath": "golang.org/x/oauth2",
+			"Rev": "2f32c3ac0fa4fb807a0fcefb0b6f2468a0d99bd0"
+		},
+		{
+			"ImportPath": "golang.org/x/oauth2/clientcredentials",
+			"Rev": "2f32c3ac0fa4fb807a0fcefb0b6f2468a0d99bd0"
+		},
+		{
+			"ImportPath": "golang.org/x/oauth2/internal",
+			"Rev": "2f32c3ac0fa4fb807a0fcefb0b6f2468a0d99bd0"
+		}
+	]
+}
