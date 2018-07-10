@@ -97,18 +97,6 @@ func (cli *CLI) Run(logger *log.Logger) int {
 	srv := server.Start()
 	defer srv.Shutdown(nil)
 
-	// Build the input chain
-	consumer, err := cli.InputChain()
-	if err != nil {
-		cli.Logger.Println("[ERROR] Failed to build input chain", err)
-		return ExitCodeError
-	}
-
-	// Check consumer group errors
-	go func() {
-		cli.CGErrorsCheck(consumer)
-	}()
-
 	// Build the enricher chain
 	cli.Conf.CF.UserAgent = userAgent
 	cfclient, cache, negativeCache, err := cli.EnricherChain(stats)
@@ -126,6 +114,18 @@ func (cli *CLI) Run(logger *log.Logger) int {
 	}
 	cache.(*enricher.MemLRUCache).Warmup(appMetadataRunning)
 	cli.Logger.Printf("[INFO] Warming up metadata cache: %v", time.Since(start))
+
+	// Build the input chain
+	consumer, err := cli.InputChain()
+	if err != nil {
+		cli.Logger.Println("[ERROR] Failed to build input chain", err)
+		return ExitCodeError
+	}
+
+	// Check consumer group errors
+	go func() {
+		cli.CGErrorsCheck(consumer)
+	}()
 
 	// Metadata cache eviction loop
 	go func() {
