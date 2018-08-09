@@ -1,0 +1,7 @@
+---
+platform: linux
+image: docker:///rakutentech/ci#latest
+inputs:
+- name: cf-metrics-refinery-src
+run:
+  path: cf-metrics-refinery-src/ci/check-errors.sh

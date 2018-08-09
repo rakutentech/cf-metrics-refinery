@@ -1,0 +1,14 @@
+applications:
+- name: cf-metrics-refinery
+  memory: 256M
+  buildpack: https://github.com/cloudfoundry/go-buildpack
+  stack: cflinuxfs2
+  health-check-type: process
+  env:
+    CFMR_CF_TIMEOUT: "60000ms"
+    CFMR_CF_SKIPSSLVALIDATION: "true"
+    CFMR_INFLUXDB_TIMEOUT: "60000ms"
+    CFMR_INFLUXDB_DATABASE: "appmetrics"
+    CFMR_KAFKA_TOPICS: "cf-app-log,cf-app-metrics-containermetrics,cf-app-metrics-httpstartstop"
+    CFMR_KAFKA_CONSUMERGROUP: "cf-metrics-refinery"
+    
