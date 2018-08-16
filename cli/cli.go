@@ -279,6 +279,12 @@ func (cli *CLI) CGErrorsCheck(consumer *input.KafkaConsumer) {
 	for err := range consumer.CG.Errors() {
 		// FIXME: this should be properly handled
 		cli.Logger.Println("[ERROR] Kafka consumer group Error", err)
+		// FIXME: Crash in order to deal with the issue: not able to release partition. Error msg: error while consuming ${topic}/${partition}: Cannot release partition: it is not claimed by this instance
+		// More info https://github.com/wvanbergen/kafka/issues/80
+		e := errors.New("it is not claimed by this instance")
+		if errors.Cause(err) == e {
+			panic("[ERROR] Kafka consumer group Error: " + err.Error())
+		}
 	}
 }
 
