@@ -51,6 +51,43 @@ The following are available options,
 ## Configuration
 `cf-metrics-refinery` is configured using environment variables. To get the list
 of environment variables run `cf-metrics-refinery -h`
+```
+$ cf-metrics-refinery -h
+This application is configured via the environment. The following environment
+variables can be used:
+
+KEY				TYPE				DEFAULT		REQUIRED	DESCRIPTION
+CFMR_CF_API			String						true		URL of the Cloud Foundry API endpoint
+CFMR_CF_USER			String						true		Username for the Cloud Foundry API
+CFMR_CF_PASSWORD        	String          				true    	Password for the Cloud Foundry API
+CFMR_CF_TIMEOUT			Duration			1m              		Timeout for Cloud Foundry API requests
+CFMR_CF_SKIPSSLVALIDATION	True or False			false				Skip SSL certificate validation for Cloud Foundry API requests
+CFMR_CF_RESULTSPERPAGE		Integer				50				Number of results per page to fetch from CF API
+CFMR_CF_TOKEN			String								Token for Cloud Foundry API
+CFMR_CF_CLIENTID		String								Client ID for Cloud Foundry API
+CFMR_CF_CLIENTSECRET		String								Client secret for Cloud Foundry API
+CFMR_INFLUXDB_USERNAME		String								Username to connect to InfluxDB
+CFMR_INFLUXDB_PASSWORD		String								Password to connect to InfluxDB
+CFMR_INFLUXDB_SKIPSSLVALIDATION	True or False			false				Skip SSL certificate validation when connecting to InfluxDB
+CFMR_INFLUXDB_ADDR		String						true		URL of InfluxDB
+CFMR_INFLUXDB_TIMEOUT		Duration			1m				Timeout for requests to InfluxDB
+CFMR_INFLUXDB_DATABASE		String						true		Name of InfluxDB database to write to
+CFMR_INFLUXDB_RETENTIONPOLICY	String								Name of the retention policy to use (instead of the default one)
+CFMR_INFLUXDB_INFLUXPINGTIMEOUT	Duration			5s				Default timeout of checking Influxdb is up or not
+CFMR_BATCHER_FLUSHINTERVAL	Duration			3s				How often to flush pending events
+CFMR_BATCHER_FLUSHMESSAGES	Integer				5000				How many messages to flush together
+CFMR_KAFKA_ZOOKEEPERS		String						true		Zookeeper nodes for offset storage
+CFMR_KAFKA_TOPICS		Comma-separated list of String			true		Topics to read events from
+CFMR_KAFKA_CONSUMERGROUP	String						true		Name of the Kafka consumer group
+CFMR_KAFKA_PROCESSINGTIMEOUT	Duration			1m				Time to wait for all the offsets for a partition to be processed after stopping to consume from it
+CFMR_KAFKA_OFFSETNEWEST		True or False			false				If true start from the newest message in Kafka in case the offset in zookeeper does not exist
+CFMR_SERVER_PORT		String				8080				port of http server
+CFMR_METADATAREFRESH		Duration			10m				How often to fetch a fresh copy of all metadata
+CFMR_METADATAEXPIRE		Duration			3m				How long before metadata is considered expired
+CFMR_METADATAEXPIRECHECK	Duration			1m				How often to check for expired metadata
+CFMR_NEGATIVECACHEEXPIRE	Duration			20m				How long before negative cache is considered expired
+CFMR_NEGATIVECACHEEXPIRECHECK	Duration			3m				How often to check for expired negative cache
+```
 
 ## Install
 `cf-metrics-refinery` can be deployed as Cloud Foundry application using the [go-buildpack](https://github.com/cloudfoundry/go-buildpack).
@@ -67,6 +104,31 @@ cf set-env cf-metrics-refinery "CFMR_..." "..."
 
 # start
 cf start cf-metrics-refinery
+```
+
+Here is a sample manifest for your reference:
+```
+$ cat manifest.sample.yml
+applications:
+- name: cf-metrics-refinery
+  instances: 3
+  routes:
+  - route: cf-metrics-refinery.sample.com
+  env:
+    CFMR_CF_API: "https://api.sample.com" #your_cf_api
+    CFMR_CF_USER: "your_cf_user"
+    CFMR_CF_PASSWORD: "your_cf_password"
+    CFMR_CF_TIMEOUT: "60000ms"
+    CFMR_CF_SKIPSSLVALIDATION: "true"
+    CFMR_INFLUXDB_USERNAME: "your_influxdb_username"
+    CFMR_INFLUXDB_PASSWORD: "your_influxdb_password"
+    CFMR_INFLUXDB_ADDR: "http://XX.XX.XX.XX:XX" #your_influxdb_address
+    CFMR_INFLUXDB_TIMEOUT: "60000ms"
+    CFMR_INFLUXDB_DATABASE: "your_influxdb_database"
+    CFMR_KAFKA_ZOOKEEPERS: "XX.XX.XX.XX,XX.XX.XX.XX,XX.XX.XX.XX" #your_zookeeper_nodes
+    CFMR_KAFKA_TOPICS: "topic1,topic2,topic3"
+    CFMR_KAFKA_CONSUMERGROUP: "set_your_cg_name"
+$
 ```
 
 ## Contributing
